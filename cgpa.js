@@ -23,10 +23,12 @@ coursesInput.addEventListener("input", (e) => {
 calculateBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const numCourses = parseInt(coursesInput.value);
+  const semester = parseInt(semesterSelect.value);
   const grades = Array.from(courseGradesDiv.children)
     .filter((child) => child.tagName === "INPUT")
     .map((input) => parseFloat(input.value));
-  const semester = parseInt(semesterSelect.value);
+  // const semester = parseInt(semesterSelect.value);
+  
 
   if (grades.includes(NaN) || grades.some((grade) => grade < 0 || grade > 20)) {
     resultPara.textContent = "Invalid grade(s) entered.";
@@ -34,9 +36,9 @@ calculateBtn.addEventListener("click", (e) => {
   }
 
   const totalPoints = grades.reduce((acc, grade) => acc + grade, 0);
-  const cgpa = totalPoints / numCourses;
+  const cgpa = semester / totalPoints;
 
-  resultPara.textContent = `Your CGPA for Semester ${semester} is: ${cgpa.toFixed(
+  resultPara.textContent = `Your CGPA for the Semester  is: ${cgpa.toFixed(
     2
   )}`;
 });
