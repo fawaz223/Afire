@@ -36,7 +36,7 @@ calculateBtn.addEventListener("click", (e) => {
   }
 
   const totalPoints = grades.reduce((acc, grade) => acc + grade, 0);
-  const cgpa = semester / totalPoints;
+  const cgpa = totalPoints / semester;
 
   resultPara.textContent = `Your CGPA for the Semester  is: ${cgpa.toFixed(
     2
